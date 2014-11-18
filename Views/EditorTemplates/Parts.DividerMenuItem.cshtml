@@ -1,0 +1,37 @@
+﻿@model CSM.DividerMenuItem.Models.DividerMenuItemPart
+
+<fieldset>
+    <div>
+        <label for="@Html.FieldIdFor(m => m.ShowHeader)">@T("Display a divider line?")</label>
+        @Html.CheckBoxFor(m => m.ShowDivider)
+    </div>
+
+    <div>
+        <label for="@Html.FieldIdFor(m => m.ShowHeader)">@T("Display a header?")</label>
+        @Html.CheckBoxFor(m => m.ShowHeader)
+    </div>
+
+    @{
+        var display = Model.ShowHeader ? "block" : "none";
+    }
+
+    <div style="display: @display">
+        <label for="@Html.FieldIdFor(m => m.Header)">@T("Header text")</label>
+        @Html.TextBoxFor(m => m.Header, new { @class = "text medium" })
+    </div>
+</fieldset>
+
+@{
+    using(Script.Foot()) {
+        <script>
+        $(function () {
+            $("#@Html.FieldIdFor(m => m.ShowHeader)").on("click", function () {
+                $("#@Html.FieldIdFor(m => m.Header)").parent().toggle();
+                if ($(this).not(":checked")) {
+                    $("#@Html.FieldIdFor(m => m.Header)").val("");
+                }
+            });
+        });
+        </script>
+    }
+}

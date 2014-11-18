@@ -1,0 +1,8 @@
+﻿@if (Model.ShowDivider)
+{
+<li role="presentation" class="divider"></li>
+}
+@if (Model.ShowHeader && HasText(Model.Header))
+{
+<li role="presentation" class="dropdown-header">@Model.Header</li>
+}
