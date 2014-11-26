@@ -1,10 +1,10 @@
 ﻿@* a default display template for the MenuDividerItemPart *@
 
-@if (Model.ShowDivider)
+@if (Model.ShowDivider != null && (bool)Model.ShowDivider)
 {
 <li role="presentation" class="divider"></li>
 }
-@if (Model.ShowHeader && HasText(Model.Header))
+@if (Model.ShowHeader != null && (bool)Model.ShowHeader && HasText(Model.Header))
 {
 <li role="presentation" class="dropdown-header">@Model.Header</li>
 }
