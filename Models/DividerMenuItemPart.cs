@@ -1,7 +1,7 @@
 ﻿using System;
 using Orchard.ContentManagement;
 
-namespace CSM.DividerMenuItem.Models
+namespace CSM.Navigation.Models
 {
     public class DividerMenuItemPart : ContentPart
     {

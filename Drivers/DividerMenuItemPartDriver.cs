@@ -1,10 +1,10 @@
-﻿using CSM.DividerMenuItem.Models;
+﻿using CSM.Navigation.Models;
 using Orchard;
 using Orchard.ContentManagement;
 using Orchard.ContentManagement.Drivers;
 using Orchard.Security;
 
-namespace CSM.DividerMenuItem.Drivers
+namespace CSM.Navigation.Drivers
 {
     public class DividerMenuItemPartDriver : ContentPartDriver<DividerMenuItemPart>
     {

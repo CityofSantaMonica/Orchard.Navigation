@@ -1,10 +1,22 @@
 ﻿@* a default display template for the MenuDividerItemPart *@
 
-@if (Model.ShowDivider != null && (bool)Model.ShowDivider)
-{
-<li role="presentation" class="divider"></li>
+@using System.Collections.Generic
+@using System.Linq
+@using Orchard.ContentManagement
+@using CSM.Navigation.Models
+
+@{
+    var part = ((IEnumerable<ContentPart>)Model.Parts).SingleOrDefault(p => p is DividerMenuItemPart) as DividerMenuItemPart;
 }
-@if (Model.ShowHeader != null && (bool)Model.ShowHeader && HasText(Model.Header))
+
+@if (part != null)
 {
-<li role="presentation" class="dropdown-header">@Model.Header</li>
+    if (part.ShowDivider)
+    {
+<li role="presentation" class="divider"></li>
+    }
+    if (part.ShowHeader && HasText(part.Header))
+    {
+<li role="presentation" class="dropdown-header">@part.Header</li>
+    }
 }

@@ -4,5 +4,5 @@ Author: City of Santa Monica
 Website: https://github.com/CityofSantaMonica
 Version: 1.0
 OrchardVersion: 1.8
-Description: Provides a Bootstrapified divider item for menus.
+Description: Provides some useful additions to Orchard's navigation system.
 Category: Navigation

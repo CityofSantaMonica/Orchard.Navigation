@@ -1,9 +1,9 @@
-﻿using CSM.DividerMenuItem.Models;
+﻿using CSM.Navigation.Models;
 using Orchard.ContentManagement.MetaData;
 using Orchard.Core.Contents.Extensions;
 using Orchard.Data.Migration;
 
-namespace CSM.DividerMenuItem
+namespace CSM.Navigation
 {
     public class Migrations : DataMigrationImpl
     {
