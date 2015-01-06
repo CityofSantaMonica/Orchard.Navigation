@@ -30,7 +30,7 @@ namespace CSM.Navigation
                     //required for Import/Export
                     .WithPart("IdentityPart")
                     //the name given to this menu item type in the Navigation editor
-                    .DisplayedAs("Divider")
+                    .DisplayedAs("Divider Menu Item")
                     //the description given to this menu item type in the Navigation editor
                     .WithSetting("Description", "Provides a Bootstrapified divider item.")
                     //required by the Navigation module
