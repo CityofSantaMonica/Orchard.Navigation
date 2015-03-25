@@ -4,5 +4,6 @@ Author: City of Santa Monica
 Website: https://github.com/CityofSantaMonica
 Version: 1.0.0
 OrchardVersion: 1.8.1
-Description: Provides some useful additions to Orchard's navigation system.
+Description: Provides some useful navigation-related additions.
+Dependencies: Orchard.Widgets
 Category: Navigation

@@ -1,4 +1,6 @@
 ﻿<Placement>
   <Place Parts_DividerMenuItem_Edit="Content:0"
-         Parts_DocumentIndex_Edit="Content:8" />
+         Parts_TableOfContents_Edit="Content:8" />
+
+  <Place Parts_TableOfContents="Content:0" />
 </Placement>

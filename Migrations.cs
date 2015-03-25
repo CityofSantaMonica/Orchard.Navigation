@@ -34,14 +34,14 @@ namespace CSM.Navigation
         public int UpdateFrom1()
         {
             ContentDefinitionManager.AlterPartDefinition(
-                typeof(DocumentIndexPart).Name,
+                typeof(TableOfContentsPart).Name,
                 part => part
                     .Attachable(false)
             );
 
             ContentDefinitionManager.AlterTypeDefinition(
-                "DocumentIndexWidget", type => type
-                    .WithPart(typeof(DocumentIndexPart).Name)
+                "TableOfContentsWidget", type => type
+                    .WithPart(typeof(TableOfContentsPart).Name)
                     .WithPart("WidgetPart")
                     .WithPart("CommonPart", p => p
                         .WithSetting("OwnerEditorSettings.ShowOwnerEditor", "false")

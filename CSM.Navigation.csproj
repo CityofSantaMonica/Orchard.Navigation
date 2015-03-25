@@ -67,6 +67,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Scripts\document-index.js" />
     <Content Include="Views\MenuDividerItem.cshtml" />
     <None Include="Placement.info" />
     <Content Include="Web.config" />
@@ -74,7 +75,7 @@
     <Content Include="Module.txt" />
     <Content Include="Views\EditorTemplates\Parts.DividerMenuItem.cshtml" />
     <Content Include="Views\EditorTemplates\Parts.DocumentIndex.cshtml" />
-    <Content Include="Views\DocumentIndex.cshtml" />
+    <Content Include="Views\Parts.TableOfContents.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Orchard\Orchard.Framework.csproj">
@@ -85,17 +86,20 @@
       <Project>{9916839C-39FC-4CEB-A5AF-89CA7E87119F}</Project>
       <Name>Orchard.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Orchard.Widgets\Orchard.Widgets.csproj">
+      <Project>{194d3ccc-1153-474d-8176-fde8d7d0d0bd}</Project>
+      <Name>Orchard.Widgets</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Drivers\DividerMenuItemPartDriver.cs" />
-    <Compile Include="Drivers\DocumentIndexPartDriver.cs" />
+    <Compile Include="Drivers\TableOfContentsPartDriver.cs" />
     <Compile Include="Migrations.cs" />
     <Compile Include="Models\DividerMenuItemPart.cs" />
-    <Compile Include="Models\DocumentIndexPart.cs" />
+    <Compile Include="Models\TableOfContentsPart.cs" />
+    <Compile Include="ViewModels\TableOfContentsPartViewModel.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Scripts\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

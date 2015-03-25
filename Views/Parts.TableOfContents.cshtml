@@ -1,0 +1,27 @@
+﻿@* a default display template for the TableOfContentsPart *@
+
+@using CSM.Navigation.ViewModels
+
+@{
+    TableOfContentsPartViewModel viewModel = Model.ViewModel;
+}
+
+<nav id="" class='@String.Format("document-index", String.IsNullOrEmpty(viewModel.Name) ? String.Empty : "-" + Model.Name)'>
+
+</nav>
+
+@using (Script.Foot())
+{
+    Script.Require("jQuery").AtFoot();
+    Script.Include("https://raw.githubusercontent.com/jgallen23/toc/master/dist/toc.min.js").AtFoot();
+
+    <script type="text/javascript">
+    $(function() {
+        var documentRoot = $("@Html.Raw(viewModel.RootSelector)");
+        var startLevel = @viewModel.StartLevel;
+        var startHeadings = $("@Html.Raw(viewModel.StartLevelSelector)", documentRoot);
+
+
+    });
+</script>
+}

@@ -3,7 +3,7 @@ using Orchard.ContentManagement;
 
 namespace CSM.Navigation.Models
 {
-    public class DocumentIndexPart : ContentPart
+    public class TableOfContentsPart : ContentPart
     {
         [Required]
         public int StartLevel
