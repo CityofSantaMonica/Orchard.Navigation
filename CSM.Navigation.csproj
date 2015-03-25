@@ -73,6 +73,8 @@
     <Content Include="Properties\AssemblyInfo.cs" />
     <Content Include="Module.txt" />
     <Content Include="Views\EditorTemplates\Parts.DividerMenuItem.cshtml" />
+    <Content Include="Views\EditorTemplates\Parts.DocumentIndex.cshtml" />
+    <Content Include="Views\DocumentIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Orchard\Orchard.Framework.csproj">
@@ -86,8 +88,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Drivers\DividerMenuItemPartDriver.cs" />
+    <Compile Include="Drivers\DocumentIndexPartDriver.cs" />
     <Compile Include="Migrations.cs" />
     <Compile Include="Models\DividerMenuItemPart.cs" />
+    <Compile Include="Models\DocumentIndexPart.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Scripts\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

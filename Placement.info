@@ -1,3 +1,4 @@
 ﻿<Placement>
-  <Place Parts_DividerMenuItem_Edit="Content:0" />
+  <Place Parts_DividerMenuItem_Edit="Content:0"
+         Parts_DocumentIndex_Edit="Content:8" />
 </Placement>

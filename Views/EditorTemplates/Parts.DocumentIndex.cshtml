@@ -1,0 +1,21 @@
+﻿@model CSM.Navigation.Models.DocumentIndexPart
+
+@{
+    var selectItems = Enumerable.Range(1, 6).Select(i => new SelectListItem { Text = "h" + i, Value = i.ToString() });
+}
+
+<fieldset>
+    <label for="@Html.FieldIdFor(m => m.StartLevel)">@T("Start at what heading level?")</label>
+    @Html.DropDownListFor(m => m.StartLevel, selectItems)
+</fieldset>
+
+<fieldset>
+    <label for="@Html.FieldIdFor(m => m.EndLevel)">@T("End at what heading level?")</label>
+    @Html.DropDownListFor(m => m.EndLevel, selectItems)
+</fieldset>
+
+<fieldset>
+        <label for="@Html.FieldIdFor(m => m.RootSelector)">@T("Document root selector")</label>
+        @Html.TextBoxFor(m => m.RootSelector, new { @class = "text medium" })
+        <span class="hint">You normally will not have to edit this value.</span>
+</fieldset>
