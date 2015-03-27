@@ -64,10 +64,14 @@
       resize();
       //generate a 'Back to Top' link
       if (opts.makeTopLink) {
-        $("body").prepend($("<a />").attr("id", "top").addClass("invisible"));
+        if ($("a#top").length === 0) {
+          $("body").prepend($("<a />").attr("id", "top").addClass("invisible"));
+        }
         self.append($("<a />").addClass("toc-top").attr("href", "#top").text(opts.topLinkText));
       }
     }
+
+    return self;
   };
 
   $.fn.tableOfContents.defaults = {
