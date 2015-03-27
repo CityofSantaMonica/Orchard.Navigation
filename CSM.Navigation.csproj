@@ -67,15 +67,21 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Scripts\document-index.js" />
+    <Content Include="Scripts\tableOfContents.js" />
+    <Content Include="Scripts\lib\toc.js" />
+    <Content Include="Scripts\lib\toc.min.js" />
+    <Content Include="Styles\tableOfContents.css" />
     <Content Include="Views\MenuDividerItem.cshtml" />
     <None Include="Placement.info" />
     <Content Include="Web.config" />
     <Content Include="Properties\AssemblyInfo.cs" />
     <Content Include="Module.txt" />
     <Content Include="Views\EditorTemplates\Parts.DividerMenuItem.cshtml" />
-    <Content Include="Views\EditorTemplates\Parts.DocumentIndex.cshtml" />
+    <Content Include="Views\EditorTemplates\Parts.TableOfContents.cshtml" />
     <Content Include="Views\Parts.TableOfContents.cshtml" />
+    <Content Include="Scripts\Web.config" />
+    <Content Include="Styles\Web.config" />
+    <Content Include="Views\DefinitionTemplates\TableOfContentsSettings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Orchard\Orchard.Framework.csproj">
@@ -97,6 +103,8 @@
     <Compile Include="Migrations.cs" />
     <Compile Include="Models\DividerMenuItemPart.cs" />
     <Compile Include="Models\TableOfContentsPart.cs" />
+    <Compile Include="Settings\TableOfContentsPartSettings.cs" />
+    <Compile Include="ResourceManifest.cs" />
     <Compile Include="ViewModels\TableOfContentsPartViewModel.cs" />
   </ItemGroup>
   <ItemGroup />

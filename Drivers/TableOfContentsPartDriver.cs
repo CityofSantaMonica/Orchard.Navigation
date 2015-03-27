@@ -1,5 +1,7 @@
-﻿using System.Xml.Linq;
+﻿using System;
+using System.Xml.Linq;
 using CSM.Navigation.Models;
+using CSM.Navigation.Settings;
 using CSM.Navigation.ViewModels;
 using Orchard.ContentManagement;
 using Orchard.ContentManagement.Drivers;
@@ -17,11 +19,18 @@ namespace CSM.Navigation.Drivers
 
         protected override DriverResult Display(TableOfContentsPart part, string displayType, dynamic shapeHelper)
         {
+            string name = part.As<WidgetPart>().Name;
+            var settings = part.Settings.GetModel<TableOfContentsSettings>();
+
             var viewModel = new TableOfContentsPartViewModel {
+                Generate = settings.Generate,
                 RootSelector = part.RootSelector,
                 StartLevel = part.StartLevel,
                 EndLevel = part.EndLevel,
-                Name = part.As<WidgetPart>().Name
+                Affix = part.Affix,
+                MakeTopLink = part.MakeTopLink,
+                TopLinkText = part.TopLinkText,
+                Name = String.IsNullOrEmpty(name) ? part.ContentItem.Id.ToString() : name
             };
 
             return ContentShape(

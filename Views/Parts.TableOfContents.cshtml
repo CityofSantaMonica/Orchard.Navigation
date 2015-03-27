@@ -1,27 +1,42 @@
 ﻿@* a default display template for the TableOfContentsPart *@
 
+@using CSM.Navigation.Settings
 @using CSM.Navigation.ViewModels
 
 @{
+    TableOfContentsSettings settings = Model.ContentPart.Settings.GetModel<TableOfContentsSettings>();
     TableOfContentsPartViewModel viewModel = Model.ViewModel;
 }
 
-<nav id="" class='@String.Format("document-index", String.IsNullOrEmpty(viewModel.Name) ? String.Empty : "-" + Model.Name)'>
-
-</nav>
-
-@using (Script.Foot())
+@if (viewModel.Generate)
 {
-    Script.Require("jQuery").AtFoot();
-    Script.Include("https://raw.githubusercontent.com/jgallen23/toc/master/dist/toc.min.js").AtFoot();
+    <nav id="@viewModel.ContainerId" class="toc">
+    </nav>
 
-    <script type="text/javascript">
-    $(function() {
-        var documentRoot = $("@Html.Raw(viewModel.RootSelector)");
-        var startLevel = @viewModel.StartLevel;
-        var startHeadings = $("@Html.Raw(viewModel.StartLevelSelector)", documentRoot);
+    using (Script.Foot())
+    {
+        Script.Require("tableOfContents");
+        Style.Require("tableOfContents");
 
+        <script type="text/javascript">
+            $(function() {
+                var root = $("@Html.Raw(viewModel.RootSelector)");
+                var startLevel = @viewModel.StartLevel;
+                var endLevel = @viewModel.EndLevel;
+                var navTarget = $("#@viewModel.ContainerId");
+                var affix = "@viewModel.Affix".toLowerCase() === "true";
+                var makeTopLink = "@viewModel.MakeTopLink".toLowerCase() === "true";
+                var topLinkText = "@viewModel.TopLinkText";
 
-    });
-</script>
+                navTarget.tableOfContents({
+                    container: root,
+                    startLevel: startLevel,
+                    endLevel: endLevel,
+                    affix: affix,
+                    makeTopLink: makeTopLink,
+                    topLinkText: topLinkText,
+                });
+            });
+        </script>
+    }
 }

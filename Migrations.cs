@@ -41,7 +41,10 @@ namespace CSM.Navigation
 
             ContentDefinitionManager.AlterTypeDefinition(
                 "TableOfContentsWidget", type => type
-                    .WithPart(typeof(TableOfContentsPart).Name)
+                    .WithPart(typeof(TableOfContentsPart).Name, p => p
+                        .WithSetting("TableOfContentsSettings.ShowOptIn", "false")
+                        .WithSetting("TableOfContentsSettings.Generate", "true")
+                    )
                     .WithPart("WidgetPart")
                     .WithPart("CommonPart", p => p
                         .WithSetting("OwnerEditorSettings.ShowOwnerEditor", "false")

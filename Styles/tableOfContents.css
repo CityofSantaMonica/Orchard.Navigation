@@ -1,0 +1,7 @@
+﻿.toc { width: 100%; }
+.toc ul, .toc ol { margin: 0; padding: 0; list-style: none; }
+.toc li { padding-top: 5px; padding-bottom: 5px }
+.toc a { text-decoration: none; display: block; }
+.toc a.toc-top { margin-top: 5px; margin-bottom: 5px; }
+.toc li:hover { border-left: solid 1px #000; padding-left: 5px; }
+.toc li.toc-active { border-left: solid 3px #000; padding-left: 10px; }

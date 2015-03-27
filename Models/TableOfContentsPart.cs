@@ -6,6 +6,13 @@ namespace CSM.Navigation.Models
     public class TableOfContentsPart : ContentPart
     {
         [Required]
+        public string RootSelector
+        {
+            get { return this.Retrieve(x => x.RootSelector, ".zone-content > :first-child"); }
+            set { this.Store(x => x.RootSelector, value); }
+        }
+
+        [Required]
         public int StartLevel
         {
             get { return this.Retrieve(x => x.StartLevel, 2); }
@@ -20,10 +27,24 @@ namespace CSM.Navigation.Models
         }
 
         [Required]
-        public string RootSelector
+        public bool Affix
         {
-            get { return this.Retrieve(x => x.RootSelector, ".zone-content > :first-child"); }
-            set { this.Store(x => x.RootSelector, value); }
+            get { return this.Retrieve(x => x.Affix, false); }
+            set { this.Store(x => x.Affix, value); }
+        }
+
+        [Required]
+        public bool MakeTopLink
+        {
+            get { return this.Retrieve(x => x.MakeTopLink, false); }
+            set { this.Store(x => x.MakeTopLink, value); }
+        }
+
+        [Required]
+        public string TopLinkText
+        {
+            get { return this.Retrieve(x => x.TopLinkText, "Back to top"); }
+            set { this.Store(x => x.TopLinkText, value); }
         }
     }
 }

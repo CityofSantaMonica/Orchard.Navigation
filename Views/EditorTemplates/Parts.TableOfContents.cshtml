@@ -1,0 +1,94 @@
+﻿@model CSM.Navigation.Models.TableOfContentsPart
+@using CSM.Navigation.Settings
+
+@{
+    var selectItems = Enumerable.Range(1, 6).Select(i => new SelectListItem { Text = "h" + i, Value = i.ToString() });
+    var settings = Model.Settings.GetModel<TableOfContentsSettings>();
+    bool showOptIn = settings == null ? true : settings.ShowOptIn;
+}
+
+<h2>Table of Contents Settings</h2>
+
+@if (showOptIn)
+{
+<fieldset>
+    <label>
+        @Html.CheckBox("TableOfContents_Generate", settings.Generate, new { id = "TableOfContents_Generate" })
+        @T("Generate a table of contents for this item?")
+    </label>
+</fieldset>
+}
+
+<fieldset class="toc-setting">
+    <label for="@Html.FieldIdFor(m => m.StartLevel)">@T("Start at what heading level?")</label>
+    @Html.DropDownListFor(m => m.StartLevel, selectItems)
+</fieldset>
+
+<fieldset class="toc-setting">
+    <label for="@Html.FieldIdFor(m => m.EndLevel)">@T("End at what heading level?")</label>
+    @Html.DropDownListFor(m => m.EndLevel, selectItems)
+</fieldset>
+
+<fieldset class="toc-setting">
+    <label for="@Html.FieldIdFor(m => m.Affix)">
+        @Html.CheckBoxFor(m => m.Affix) @T("Check to make the table of contents follow the scroll position")
+    </label>
+</fieldset>
+
+<fieldset class="toc-setting toc-setting-affix">
+    <div>
+        <label for="@Html.FieldIdFor(m => m.MakeTopLink)">
+            @Html.CheckBoxFor(m => m.MakeTopLink) @T("Check to generate a 'Back to top' link")
+        </label>
+    </div>
+    <div class="toc-setting-topLink">
+        <label for="@Html.FieldIdFor(m => m.TopLinkText)">@T("Link text")</label>
+        @Html.TextBoxFor(m => m.TopLinkText, new { @class = "text medium" })
+    </div>
+</fieldset>
+
+<fieldset class="toc-setting">
+    <label for="@Html.FieldIdFor(m => m.RootSelector)">@T("Document root selector")</label>
+    @Html.TextBoxFor(m => m.RootSelector, new { @class = "text medium" })
+</fieldset>
+
+@using (Script.Foot())
+{
+    Script.Require("jQuery");
+
+    <script type="text/javascript">
+        $(function() {
+            var showOptIn = "@showOptIn".toLowerCase() === "true";
+            var generateCheck = $("#TableOfContents_Generate");
+            var settings = $(".toc-setting");
+            var affixCheck = $("#TableOfContents_Affix");
+            var affixSettings = $(".toc-setting-affix");
+            var topLinkCheck = $("#TableOfContents_MakeTopLink");
+            var topLinkSettings = $(".toc-setting-topLink");
+
+            generateCheck.on("change", function() {
+                settings.toggle();
+            });
+
+            if(showOptIn && !generateCheck.is(":checked")) {
+                settings.hide();
+            }
+
+            affixCheck.on("change", function() {
+                affixSettings.toggle();
+            });
+
+            if(!affixCheck.is(":checked")) {
+                affixSettings.hide();
+            };
+
+            topLinkCheck.on("change", function() {
+                topLinkSettings.toggle();
+            });
+
+            if (!topLinkCheck.is(":checked")) {
+                topLinkSettings.hide();
+            }
+        });
+    </script>
+}

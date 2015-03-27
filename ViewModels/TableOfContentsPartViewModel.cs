@@ -4,25 +4,25 @@ namespace CSM.Navigation.ViewModels
 {
     public class TableOfContentsPartViewModel
     {
+        public bool Generate { get; set; }
+
         public string RootSelector { get; set; }
 
         public int StartLevel { get; set; }
-        public string StartLevelSelector
-        {
-            get { return String.Format("h{0}", StartLevel); }
-        }
 
         public int EndLevel { get; set;}
-        public string EndLevelSelector
-        {
-            get { return String.Format("h{0}", EndLevel); }
-        }
+
+        public bool Affix { get; set; }
+
+        public bool MakeTopLink { get; set; }
+
+        public string TopLinkText { get; set; }
 
         public string Name { get; set; }
 
         public string ContainerId
         {
-            get { return String.Format("toc", Name); }
+            get { return String.Format("toc-{0}", Name); }
         }
     }
 }
