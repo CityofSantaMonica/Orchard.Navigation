@@ -17,13 +17,13 @@ namespace CSM.Navigation
 
             //this module's defined plugin, depends on the library plugin
             manifest
-                .DefineScript("tableOfContents")
+                .DefineScript("TableOfContents")
                     .SetUrl("tableOfContents.js")
                     .SetDependencies("toc", "jQuery");
 
             //some default styling
             manifest
-                .DefineStyle("tableOfContents")
+                .DefineStyle("TableOfContents")
                     .SetUrl("tableOfContents.css");
         }
     }
