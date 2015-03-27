@@ -15,6 +15,7 @@ namespace CSM.Navigation.Data
                 typeof(TableOfContentsPart).Name,
                 part => part
                     .Attachable()
+                    .WithDescription("Enables generation of a table of contents.")
             );
 
             ContentDefinitionManager.AlterTypeDefinition(
