@@ -8,6 +8,13 @@ namespace CSM.Navigation.Models
     public class TableOfContentsPart : ContentPart
     {
         [Required]
+        public bool Generate
+        {
+            get { return this.Retrieve(x => x.Generate, false); }
+            set { this.Store(x => x.Generate, value); }
+        }
+
+        [Required]
         public string RootSelector
         {
             get { return this.Retrieve(x => x.RootSelector, ".zone-content > :first-child"); }
