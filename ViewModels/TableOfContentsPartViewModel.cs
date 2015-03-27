@@ -6,6 +6,8 @@ namespace CSM.Navigation.ViewModels
     [OrchardFeature("CSM.Navigation.TableOfContents")]
     public class TableOfContentsPartViewModel
     {
+        public bool ShowOptIn { get; set; }
+
         public bool Generate { get; set; }
 
         public string RootSelector { get; set; }

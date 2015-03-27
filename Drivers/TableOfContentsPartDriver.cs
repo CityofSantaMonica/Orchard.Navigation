@@ -21,19 +21,7 @@ namespace CSM.Navigation.Drivers
 
         protected override DriverResult Display(TableOfContentsPart part, string displayType, dynamic shapeHelper)
         {
-            string name = part.As<WidgetPart>().Name;
-            var settings = part.Settings.GetModel<TableOfContentsSettings>();
-
-            var viewModel = new TableOfContentsPartViewModel {
-                Generate = settings.Generate,
-                RootSelector = part.RootSelector,
-                StartLevel = part.StartLevel,
-                EndLevel = part.EndLevel,
-                Affix = part.Affix,
-                MakeTopLink = part.MakeTopLink,
-                TopLinkText = part.TopLinkText,
-                Name = String.IsNullOrEmpty(name) ? part.ContentItem.Id.ToString() : name
-            };
+            var viewModel = getViewModel(part);
 
             return ContentShape(
                 "Parts_TableOfContents",
@@ -43,11 +31,13 @@ namespace CSM.Navigation.Drivers
 
         protected override DriverResult Editor(TableOfContentsPart part, dynamic shapeHelper)
         {
+            var viewModel = getViewModel(part);
+
             return ContentShape(
                 "Parts_TableOfContents_Edit",
                 () => shapeHelper.EditorTemplate(
                     TemplateName: "Parts.TableOfContents",
-                    Model: part,
+                    Model: viewModel,
                     Prefix: Prefix
                 )
             );
@@ -55,7 +45,13 @@ namespace CSM.Navigation.Drivers
 
         protected override DriverResult Editor(TableOfContentsPart part, IUpdateModel updater, dynamic shapeHelper)
         {
-            updater.TryUpdateModel(part, Prefix, null, null);
+            var viewModel = new TableOfContentsPartViewModel();
+            
+            if (updater.TryUpdateModel(viewModel, Prefix, null, null))
+            {
+                updatePart(part, viewModel);
+            };
+
             return Editor(part, shapeHelper);
         }
 
@@ -79,6 +75,37 @@ namespace CSM.Navigation.Drivers
             element.Add(new XAttribute("StartLevel", part.StartLevel));
             element.Add(new XAttribute("EndLevel", part.EndLevel));
             element.Add(new XAttribute("RootSelector", part.RootSelector));
+        }
+
+        private static TableOfContentsPartViewModel getViewModel(TableOfContentsPart part)
+        {
+            var widget = part.As<WidgetPart>();
+            var settings = part.Settings.GetModel<TableOfContentsSettings>();
+
+            var viewModel = new TableOfContentsPartViewModel {
+                ShowOptIn = settings == null ? true : settings.ShowOptIn,
+                Generate = part.Generate,
+                RootSelector = part.RootSelector,
+                StartLevel = part.StartLevel,
+                EndLevel = part.EndLevel,
+                Affix = part.Affix,
+                MakeTopLink = part.MakeTopLink,
+                TopLinkText = part.TopLinkText,
+                Name = widget == null || String.IsNullOrEmpty(widget.Name) ? part.ContentItem.Id.ToString() : widget.Name
+            };
+
+            return viewModel;
+        }
+
+        private static void updatePart(TableOfContentsPart part, TableOfContentsPartViewModel viewModel)
+        {
+            part.Generate = viewModel.Generate;
+            part.RootSelector = viewModel.RootSelector;
+            part.StartLevel = viewModel.StartLevel;
+            part.EndLevel = viewModel.EndLevel;
+            part.Affix = viewModel.Affix;
+            part.MakeTopLink = viewModel.MakeTopLink;
+            part.TopLinkText = viewModel.TopLinkText;
         }
     }
 }
