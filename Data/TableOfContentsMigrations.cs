@@ -14,7 +14,7 @@ namespace CSM.Navigation.Data
             ContentDefinitionManager.AlterPartDefinition(
                 typeof(TableOfContentsPart).Name,
                 part => part
-                    .Attachable(false)
+                    .Attachable()
             );
 
             ContentDefinitionManager.AlterTypeDefinition(
