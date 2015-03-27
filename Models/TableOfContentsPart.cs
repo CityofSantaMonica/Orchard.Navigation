@@ -1,8 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Orchard.ContentManagement;
+using Orchard.Environment.Extensions;
 
 namespace CSM.Navigation.Models
 {
+    [OrchardFeature("CSM.Navigation.TableOfContents")]
     public class TableOfContentsPart : ContentPart
     {
         [Required]

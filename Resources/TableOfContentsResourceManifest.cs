@@ -1,8 +1,10 @@
-﻿using Orchard.UI.Resources;
+﻿using Orchard.Environment.Extensions;
+using Orchard.UI.Resources;
 
-namespace CSM.Navigation
+namespace CSM.Navigation.Resources
 {
-    public class ResourceManifest : IResourceManifestProvider
+    [OrchardFeature("CSM.Navigation.TableOfContents")]
+    public class TableOfContentsResourceManifest : IResourceManifestProvider
     {
         public void BuildManifests(ResourceManifestBuilder builder)
         {

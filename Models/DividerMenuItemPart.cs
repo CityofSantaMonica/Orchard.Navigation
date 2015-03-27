@@ -1,5 +1,6 @@
 ﻿using System;
 using Orchard.ContentManagement;
+using Orchard.Environment.Extensions;
 
 namespace CSM.Navigation.Models
 {

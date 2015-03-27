@@ -71,7 +71,7 @@
     <Content Include="Scripts\lib\toc.js" />
     <Content Include="Scripts\lib\toc.min.js" />
     <Content Include="Styles\tableOfContents.css" />
-    <Content Include="Views\MenuDividerItem.cshtml" />
+    <Content Include="Views\DividerMenuItem.cshtml" />
     <None Include="Placement.info" />
     <Content Include="Web.config" />
     <Content Include="Properties\AssemblyInfo.cs" />
@@ -98,13 +98,18 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\DividerMenuItemMigrations.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Data\TableOfContentsMigrations.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Drivers\DividerMenuItemPartDriver.cs" />
     <Compile Include="Drivers\TableOfContentsPartDriver.cs" />
-    <Compile Include="Migrations.cs" />
     <Compile Include="Models\DividerMenuItemPart.cs" />
     <Compile Include="Models\TableOfContentsPart.cs" />
     <Compile Include="Settings\TableOfContentsPartSettings.cs" />
-    <Compile Include="ResourceManifest.cs" />
+    <Compile Include="Resources\TableOfContentsResourceManifest.cs" />
     <Compile Include="ViewModels\TableOfContentsPartViewModel.cs" />
   </ItemGroup>
   <ItemGroup />

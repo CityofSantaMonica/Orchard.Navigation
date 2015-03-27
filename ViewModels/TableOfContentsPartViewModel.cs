@@ -1,7 +1,9 @@
 ﻿using System;
+using Orchard.Environment.Extensions;
 
 namespace CSM.Navigation.ViewModels
 {
+    [OrchardFeature("CSM.Navigation.TableOfContents")]
     public class TableOfContentsPartViewModel
     {
         public bool Generate { get; set; }

@@ -4,12 +4,14 @@ using Orchard.ContentManagement.MetaData;
 using Orchard.ContentManagement.MetaData.Builders;
 using Orchard.ContentManagement.MetaData.Models;
 using Orchard.ContentManagement.ViewModels;
+using Orchard.Environment.Extensions;
 
 namespace CSM.Navigation.Settings
 {
     /// <summary>
     /// Per-content-type settings for an attached Table of Contents part.
     /// </summary>
+    [OrchardFeature("CSM.Navigation.TableOfContents")]
     public class TableOfContentsSettings
     {
         public bool ShowOptIn { get; set; }
@@ -27,6 +29,7 @@ namespace CSM.Navigation.Settings
     /// <summary>
     /// Driver for the Table of Contents part and type-part settings.
     /// </summary>
+    [OrchardFeature("CSM.Navigation.TableOfContents")]
     public class TableOfContentsSettingsDriver : ContentDefinitionEditorEventsBase
     {
         public override IEnumerable<TemplateViewModel> TypePartEditor(ContentTypePartDefinition definition)

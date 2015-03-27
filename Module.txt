@@ -5,5 +5,13 @@ Website: https://github.com/CityofSantaMonica
 Version: 1.0.0
 OrchardVersion: 1.8.1
 Description: Provides some useful navigation-related additions.
-Dependencies: Orchard.Widgets
 Category: Navigation
+Features:
+    CSM.Navigation:
+        Description: Provides a Bootstrapified divider menu item for menus.
+        Category: Navigation
+    CSM.Navigation.TableOfContents:
+        Name: CSM.Navigation.TableOfContents
+        Description: Provides a part and widget for generating a table of contents.
+        Dependencies: Orchard.Widgets
+        Category: Navigation

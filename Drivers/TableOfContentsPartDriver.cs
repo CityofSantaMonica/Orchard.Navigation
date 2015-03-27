@@ -6,10 +6,12 @@ using CSM.Navigation.ViewModels;
 using Orchard.ContentManagement;
 using Orchard.ContentManagement.Drivers;
 using Orchard.ContentManagement.Handlers;
+using Orchard.Environment.Extensions;
 using Orchard.Widgets.Models;
 
 namespace CSM.Navigation.Drivers
 {
+    [OrchardFeature("CSM.Navigation.TableOfContents")]
     public class TableOfContentsPartDriver : ContentPartDriver<TableOfContentsPart>
     {
         protected override string Prefix
