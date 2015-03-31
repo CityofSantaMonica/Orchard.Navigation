@@ -21,8 +21,9 @@ namespace CSM.Navigation.Data
             ContentDefinitionManager.AlterTypeDefinition(
                 "TableOfContentsWidget", type => type
                     .WithPart(typeof(TableOfContentsPart).Name, p => p
-                        .WithSetting("TableOfContentsSettings.ShowOptIn", "false")
+                        .WithSetting("TableOfContentsSettings.OptIn", "false")
                         .WithSetting("TableOfContentsSettings.Generate", "true")
+                        .WithSetting("TableOfContentsSettings.AllowTitle", "false")
                     )
                     .WithPart("WidgetPart")
                     .WithPart("CommonPart", p => p

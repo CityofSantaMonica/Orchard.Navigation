@@ -14,15 +14,18 @@ namespace CSM.Navigation.Settings
     [OrchardFeature("CSM.Navigation.TableOfContents")]
     public class TableOfContentsSettings
     {
-        public bool ShowOptIn { get; set; }
+        public bool OptIn { get; set; }
         public bool Generate { get; set; }
+        public bool AllowTitle { get; set; }
 
         public TableOfContentsSettings()
         {
             //by default allow table of contents generation to be opt-in
-            ShowOptIn = true;
+            OptIn = true;
             //by default don't generate a table of contents
             Generate = false;
+            //by default allow a title to be given to the table of contents
+            AllowTitle = true;
         }
     }
 
@@ -49,8 +52,9 @@ namespace CSM.Navigation.Settings
 
             var model = new TableOfContentsSettings();
             updateModel.TryUpdateModel(model, "TableOfContentsSettings", null, null);
-            builder.WithSetting("TableOfContentsSettings.ShowOptIn", model.ShowOptIn.ToString());
+            builder.WithSetting("TableOfContentsSettings.OptIn", model.OptIn.ToString());
             builder.WithSetting("TableOfContentsSettings.Generate", model.Generate.ToString());
+            builder.WithSetting("TableOfContentsSettings.AllowTitle", model.AllowTitle.ToString());
             yield return DefinitionTemplate(model);
         }
     }

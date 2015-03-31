@@ -1,8 +1,8 @@
 ﻿@model CSM.Navigation.Settings.TableOfContentsSettings
 
 <fieldset>
-    <label for="@Html.FieldIdFor(m => m.ShowOptIn)">
-        @Html.CheckBoxFor(m => m.ShowOptIn) @T("Opt-In")
+    <label for="@Html.FieldIdFor(m => m.OptIn)">
+        @Html.CheckBoxFor(m => m.OptIn) @T("Opt-In")
     </label>
     <span class="hint">Check to allow table of contents generation to be opt-in</span>
 </fieldset>
@@ -12,4 +12,11 @@
         @Html.CheckBoxFor(m => m.Generate) @T("Auto-Generate")
     </label>
     <span class="hint">Check to generate a table of contents by default</span>
+</fieldset>
+
+<fieldset>
+    <label for="@Html.FieldIdFor(m => m.AllowTitle)">
+        @Html.CheckBoxFor(m => m.AllowTitle) @T("Title")
+    </label>
+    <span class="hint">Check to allow a title to be given to the table of contents</span>
 </fieldset>

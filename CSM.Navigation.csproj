@@ -108,7 +108,7 @@
     <Compile Include="Drivers\TableOfContentsPartDriver.cs" />
     <Compile Include="Models\DividerMenuItemPart.cs" />
     <Compile Include="Models\TableOfContentsPart.cs" />
-    <Compile Include="Settings\TableOfContentsPartSettings.cs" />
+    <Compile Include="Settings\TableOfContentsSettings.cs" />
     <Compile Include="Resources\TableOfContentsResourceManifest.cs" />
     <Compile Include="ViewModels\TableOfContentsPartViewModel.cs" />
   </ItemGroup>
