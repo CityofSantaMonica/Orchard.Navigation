@@ -1,42 +1,42 @@
-﻿@* a default display template for the TableOfContentsPart *@
-
-@using CSM.Navigation.Settings
-@using CSM.Navigation.ViewModels
+﻿@using CSM.Navigation.ViewModels
 
 @{
-    TableOfContentsSettings settings = Model.ContentPart.Settings.GetModel<TableOfContentsSettings>();
-    TableOfContentsPartViewModel viewModel = Model.ViewModel;
+    var viewModel = Model.ViewModel as TableOfContentsPartViewModel;
 }
 
-@if (viewModel.Generate)
+@if (viewModel.AllowTitle && !String.IsNullOrEmpty(viewModel.Title))
 {
-    <nav id="@viewModel.ContainerId" class="toc">
-    </nav>
+<header class="toc">
+    <h1>@viewModel.Title</h1>
+</header>
+}
 
-    using (Script.Foot())
-    {
-        Script.Require("TableOfContents");
-        Style.Require("TableOfContents");
+<nav id="@viewModel.ContainerId" class="toc">
+</nav>
 
-        <script type="text/javascript">
-            $(function() {
-                var root = $("@Html.Raw(viewModel.RootSelector)");
-                var startLevel = @viewModel.StartLevel;
-                var endLevel = @viewModel.EndLevel;
-                var navTarget = $("#@viewModel.ContainerId");
-                var affix = "@viewModel.Affix".toLowerCase() === "true";
-                var makeTopLink = "@viewModel.MakeTopLink".toLowerCase() === "true";
-                var topLinkText = "@viewModel.TopLinkText";
+@using (Script.Foot())
+{
+    Script.Require("TableOfContents");
+    Style.Require("TableOfContents");
 
-                navTarget.tableOfContents({
-                    container: root,
-                    startLevel: startLevel,
-                    endLevel: endLevel,
-                    affix: affix,
-                    makeTopLink: makeTopLink,
-                    topLinkText: topLinkText,
-                });
-            });
-        </script>
-    }
+    <script type="text/javascript">
+    $(function() {
+        var root = $("@Html.Raw(viewModel.RootSelector)");
+        var startLevel = @viewModel.StartLevel;
+        var endLevel = @viewModel.EndLevel;
+        var affix = "@viewModel.Affix".toLowerCase() === "true";
+        var makeTopLink = "@viewModel.MakeTopLink".toLowerCase() === "true";
+        var topLinkText = "@viewModel.TopLinkText";
+        var navTarget = $("#@viewModel.ContainerId");
+
+        navTarget.tableOfContents({
+            container: root,
+            startLevel: startLevel,
+            endLevel: endLevel,
+            affix: affix,
+            makeTopLink: makeTopLink,
+            topLinkText: topLinkText,
+        });
+    });
+    </script>
 }

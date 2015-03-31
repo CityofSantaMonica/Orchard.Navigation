@@ -7,11 +7,16 @@ namespace CSM.Navigation.Models
     [OrchardFeature("CSM.Navigation.TableOfContents")]
     public class TableOfContentsPart : ContentPart
     {
-        [Required]
-        public bool Generate
+        public bool? Generate
         {
-            get { return this.Retrieve(x => x.Generate, false); }
+            get { return this.Retrieve(x => x.Generate); }
             set { this.Store(x => x.Generate, value); }
+        }
+
+        public string Title
+        {
+            get { return this.Retrieve(x => x.Title); }
+            set { this.Store(x => x.Title, value); }
         }
 
         [Required]
@@ -49,7 +54,6 @@ namespace CSM.Navigation.Models
             set { this.Store(x => x.MakeTopLink, value); }
         }
 
-        [Required]
         public string TopLinkText
         {
             get { return this.Retrieve(x => x.TopLinkText, "Back to top"); }

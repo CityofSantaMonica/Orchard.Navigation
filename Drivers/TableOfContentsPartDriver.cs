@@ -21,12 +21,19 @@ namespace CSM.Navigation.Drivers
 
         protected override DriverResult Display(TableOfContentsPart part, string displayType, dynamic shapeHelper)
         {
-            var viewModel = getViewModel(part);
+            var settings = part.Settings.GetModel<TableOfContentsSettings>();
 
-            return ContentShape(
-                "Parts_TableOfContents",
-                () => shapeHelper.Parts_TableOfContents(ViewModel: viewModel)
-            );
+            if (part.Generate.HasValue && part.Generate.Value || (!settings.OptIn && settings.Generate))
+            {
+                var viewModel = getViewModel(part);
+
+                return ContentShape(
+                    "Parts_TableOfContents",
+                    () => shapeHelper.Parts_TableOfContents(ViewModel: viewModel)
+                );
+            }
+
+            return null;
         }
 
         protected override DriverResult Editor(TableOfContentsPart part, dynamic shapeHelper)
@@ -61,30 +68,40 @@ namespace CSM.Navigation.Drivers
 
             if (element == null) return;
 
-            var defaultPart = new TableOfContentsPart();
-
-            part.StartLevel = element.Attr<int?>("StartLevel") ?? defaultPart.StartLevel;
-            part.EndLevel = element.Attr<int?>("EndLevel") ?? defaultPart.EndLevel;
-            part.RootSelector = element.Attr<string>("RootSelector") ?? defaultPart.RootSelector;
+            part.Generate = element.Attr<bool?>("Generate");
+            part.Title = element.Attr<string>("Title");
+            part.RootSelector = element.Attr<string>("RootSelector");
+            part.StartLevel = element.Attr<int>("StartLevel");
+            part.EndLevel = element.Attr<int>("EndLevel");
+            part.Affix = element.Attr<bool>("Affix");
+            part.MakeTopLink = element.Attr<bool>("MakeTopLink");
+            part.TopLinkText = element.Attr<string>("TopLinkText");
         }
 
         protected override void Exporting(TableOfContentsPart part, ExportContentContext context)
         {
             var element = context.Element(part.PartDefinition.Name);
 
+            element.Add(new XAttribute("Generate", part.Generate.HasValue ? part.Generate.Value : default(bool?)));
+            element.Add(new XAttribute("Title", part.Title ?? String.Empty));
+            element.Add(new XAttribute("RootSelector", part.RootSelector));
             element.Add(new XAttribute("StartLevel", part.StartLevel));
             element.Add(new XAttribute("EndLevel", part.EndLevel));
-            element.Add(new XAttribute("RootSelector", part.RootSelector));
+            element.Add(new XAttribute("Affix", part.Affix));
+            element.Add(new XAttribute("MakeTopLink", part.MakeTopLink));
+            element.Add(new XAttribute("TopLinkText", part.TopLinkText ?? String.Empty));
         }
 
         private static TableOfContentsPartViewModel getViewModel(TableOfContentsPart part)
         {
             var widget = part.As<WidgetPart>();
-            var settings = part.Settings.GetModel<TableOfContentsSettings>();
+            var settings = part.Settings.GetModel<TableOfContentsSettings>() ?? new TableOfContentsSettings();
 
             var viewModel = new TableOfContentsPartViewModel {
-                ShowOptIn = settings == null ? true : settings.ShowOptIn,
-                Generate = part.Generate,
+                OptIn = settings.OptIn,
+                AllowTitle = settings.AllowTitle,
+                Generate = part.Generate.HasValue ? part.Generate.Value : settings.Generate,
+                Title = part.Title,
                 RootSelector = part.RootSelector,
                 StartLevel = part.StartLevel,
                 EndLevel = part.EndLevel,
@@ -100,6 +117,7 @@ namespace CSM.Navigation.Drivers
         private static void updatePart(TableOfContentsPart part, TableOfContentsPartViewModel viewModel)
         {
             part.Generate = viewModel.Generate;
+            part.Title = viewModel.AllowTitle && !String.IsNullOrEmpty(viewModel.Title) ? viewModel.Title : null;
             part.RootSelector = viewModel.RootSelector;
             part.StartLevel = viewModel.StartLevel;
             part.EndLevel = viewModel.EndLevel;

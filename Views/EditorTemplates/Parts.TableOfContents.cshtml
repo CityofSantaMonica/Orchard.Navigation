@@ -1,5 +1,4 @@
 ﻿@model CSM.Navigation.ViewModels.TableOfContentsPartViewModel
-@using CSM.Navigation.Settings
 
 @{
     var selectItems = Enumerable.Range(1, 6).Select(i => new SelectListItem { Text = "h" + i, Value = i.ToString() });
@@ -7,12 +6,22 @@
 
 <h2>Table of Contents Settings</h2>
 
-@if (Model.ShowOptIn)
+@if (Model.OptIn)
 {
 <fieldset>
     <label for="@Html.FieldIdFor(m => m.Generate)">
         @Html.CheckBoxFor(m => m.Generate) @T("Check to generate a table of contents for this item")
     </label>
+</fieldset>
+}
+
+@if (Model.AllowTitle)
+{
+<fieldset class="toc-setting">
+    <label for="@Html.FieldIdFor(m => m.Title)">@T("Title")</label>
+    @Html.TextBoxFor(m => m.Title, new { @class = "text medium" })
+    <span class="hint">Leave blank to omit the title.</span>
+    @Html.HiddenFor(m => m.AllowTitle)
 </fieldset>
 }
 
@@ -55,7 +64,7 @@
 
     <script type="text/javascript">
         $(function() {
-            var showOptIn = "@Model.ShowOptIn".toLowerCase() === "true";
+            var showOptIn = "@Model.OptIn".toLowerCase() === "true";
             var generateCheckbox = $("#TableOfContents_Generate");
             var settings = $(".toc-setting");
             var affixCheckbox = $("#TableOfContents_Affix");
