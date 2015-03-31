@@ -2,5 +2,8 @@
   <Place Parts_DividerMenuItem_Edit="Content:0"
          Parts_TableOfContents_Edit="Content:8" />
 
-  <Place Parts_TableOfContents="Content:0" />
+  <Match DisplayType="SummaryAdmin">
+    <Place Parts_TableOfContents="-" />
+  </Match>
+
 </Placement>
