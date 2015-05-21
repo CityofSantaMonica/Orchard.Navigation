@@ -82,7 +82,7 @@ namespace CSM.Navigation.Drivers
         {
             var element = context.Element(part.PartDefinition.Name);
 
-            element.Add(new XAttribute("Generate", part.Generate.HasValue ? part.Generate.Value : default(bool?)));
+            element.Add(new XAttribute("Generate", part.Generate.HasValue ? part.Generate.Value.ToString() : String.Empty));
             element.Add(new XAttribute("Title", part.Title ?? String.Empty));
             element.Add(new XAttribute("RootSelector", part.RootSelector));
             element.Add(new XAttribute("StartLevel", part.StartLevel));
