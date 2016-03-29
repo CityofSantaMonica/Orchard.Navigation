@@ -1,9 +1,9 @@
 ﻿Name: CSM.Navigation
 AntiForgery: enabled
 Author: City of Santa Monica
-Website: https://github.com/CityofSantaMonica
-Version: 1.0.0
-OrchardVersion: 1.9
+Website: https://github.com/CityofSantaMonica/Orchard.Navigation
+Version: 1.1.0
+OrchardVersion: 1.10
 Description: Provides some useful navigation-related additions.
 Category: Navigation
 Features:
