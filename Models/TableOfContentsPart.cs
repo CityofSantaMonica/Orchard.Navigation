@@ -1,6 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using CSM.Navigation.Settings;
 using Orchard.ContentManagement;
 using Orchard.Environment.Extensions;
+using System.ComponentModel.DataAnnotations;
 
 namespace CSM.Navigation.Models
 {
@@ -22,7 +23,7 @@ namespace CSM.Navigation.Models
         [Required]
         public string RootSelector
         {
-            get { return this.Retrieve(x => x.RootSelector, ".zone-content > :first-child"); }
+            get { return this.Retrieve(x => x.RootSelector, TableOfContentsSettings.DefaultRootSelector); }
             set { this.Store(x => x.RootSelector, value); }
         }
 

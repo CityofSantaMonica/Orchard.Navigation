@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using Orchard.ContentManagement;
+﻿using Orchard.ContentManagement;
 using Orchard.ContentManagement.MetaData;
 using Orchard.ContentManagement.MetaData.Builders;
 using Orchard.ContentManagement.MetaData.Models;
 using Orchard.ContentManagement.ViewModels;
 using Orchard.Environment.Extensions;
+using System.Collections.Generic;
 
 namespace CSM.Navigation.Settings
 {
@@ -14,9 +14,15 @@ namespace CSM.Navigation.Settings
     [OrchardFeature("CSM.Navigation.TableOfContents")]
     public class TableOfContentsSettings
     {
+        internal static string DefaultRootSelector
+        {
+            get { return ".zone-content"; }
+        }
+
         public bool OptIn { get; set; }
         public bool Generate { get; set; }
         public bool AllowTitle { get; set; }
+        public string RootSelector { get; set; }
 
         public TableOfContentsSettings()
         {
@@ -26,6 +32,8 @@ namespace CSM.Navigation.Settings
             Generate = false;
             //by default allow a title to be given to the table of contents
             AllowTitle = true;
+            //by default target the main content zone
+            RootSelector = DefaultRootSelector;
         }
     }
 
@@ -55,6 +63,7 @@ namespace CSM.Navigation.Settings
             builder.WithSetting("TableOfContentsSettings.OptIn", model.OptIn.ToString());
             builder.WithSetting("TableOfContentsSettings.Generate", model.Generate.ToString());
             builder.WithSetting("TableOfContentsSettings.AllowTitle", model.AllowTitle.ToString());
+            builder.WithSetting("TableOfContentsSettings.RootSelector", model.RootSelector);
             yield return DefinitionTemplate(model);
         }
     }

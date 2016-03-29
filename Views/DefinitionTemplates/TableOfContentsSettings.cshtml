@@ -20,3 +20,9 @@
     </label>
     <span class="hint">Check to allow a title to be given to the table of contents</span>
 </fieldset>
+
+<fieldset>
+    <label for="@Html.FieldIdFor(m => m.RootSelector)">@T("Default Document Root Selector")</label>
+    @Html.TextBoxFor(m => m.RootSelector)
+    <span class="hint">Enter the default selector to use to define the root of the document</span>
+</fieldset>
