@@ -15,3 +15,8 @@ Features:
         Description: Provides a part and widget for generating a table of contents.
         Dependencies: Orchard.Widgets
         Category: Navigation
+    CSM.Navigation.TaxonomyRouting:
+        Name: CSM.Navigation.TaxonomyRouting
+        Description: Provides a part and token for generating Autoroutes from a Taxonomy.
+        Dependencies: Orchard.Autoroute, Orchard.Taxonomies, Orchard.Tokens
+        Category: Navigation

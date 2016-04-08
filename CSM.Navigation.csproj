@@ -123,6 +123,18 @@
       <Name>Orchard.Core</Name>
       <Private>False</Private>
     </ProjectReference>
+    <ProjectReference Include="..\Orchard.Autoroute\Orchard.Autoroute.csproj">
+      <Project>{66fccd76-2761-47e3-8d11-b45d0001ddaa}</Project>
+      <Name>Orchard.Autoroute</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Orchard.Taxonomies\Orchard.Taxonomies.csproj">
+      <Project>{e649ea64-d213-461b-87f7-d67035801443}</Project>
+      <Name>Orchard.Taxonomies</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Orchard.Tokens\Orchard.Tokens.csproj">
+      <Project>{6f759635-13d7-4e94-bcc9-80445d63f117}</Project>
+      <Name>Orchard.Tokens</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Orchard.Widgets\Orchard.Widgets.csproj">
       <Project>{194d3ccc-1153-474d-8176-fde8d7d0d0bd}</Project>
       <Name>Orchard.Widgets</Name>
@@ -136,12 +148,17 @@
     <Compile Include="Data\TableOfContentsMigrations.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Data\TaxonomyRoutingMigrations.cs" />
     <Compile Include="Drivers\DividerMenuItemPartDriver.cs" />
     <Compile Include="Drivers\TableOfContentsPartDriver.cs" />
+    <Compile Include="Handlers\TaxonomyRoutingActivatingFilter.cs" />
+    <Compile Include="Handlers\TaxonomyRoutingPartHandler.cs" />
     <Compile Include="Models\DividerMenuItemPart.cs" />
     <Compile Include="Models\TableOfContentsPart.cs" />
+    <Compile Include="Models\TaxonomyRoutingPart.cs" />
     <Compile Include="Settings\TableOfContentsSettings.cs" />
     <Compile Include="Resources\TableOfContentsResourceManifest.cs" />
+    <Compile Include="Tokens\TaxonomyRoutingTokens.cs" />
     <Compile Include="ViewModels\TableOfContentsPartViewModel.cs" />
   </ItemGroup>
   <ItemGroup />
