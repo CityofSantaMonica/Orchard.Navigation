@@ -8,11 +8,15 @@ Description: Provides some useful navigation-related additions.
 Category: Navigation
 Features:
     CSM.Navigation:
-        Description: Provides a Bootstrapified divider menu item for menus.
+        Description: Provides some useful navigation-related additions.
         Category: Navigation
         Dependencies: Orchard.Taxonomies, Orchard.Tokens
+    CSM.Navigation.Menus:
+        Description: Provides bootstrapified menu items.
+        Category: Navigation
+        Dependencies: CSM.Navigation
     CSM.Navigation.TableOfContents:
         Name: CSM.Navigation.TableOfContents
         Description: Provides a part and widget for generating a table of contents.
-        Dependencies: CSM.Navigation, Orchard.Widgets
         Category: Navigation
+        Dependencies: CSM.Navigation, Orchard.Widgets

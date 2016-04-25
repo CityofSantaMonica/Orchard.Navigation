@@ -4,6 +4,7 @@ using Orchard.Environment.Extensions;
 
 namespace CSM.Navigation.Models
 {
+    [OrchardFeature("CSM.Navigation.Menus")]
     public class DividerMenuItemPart : ContentPart
     {
         public bool ShowDivider

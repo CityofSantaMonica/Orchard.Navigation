@@ -6,6 +6,7 @@ using Orchard.Environment.Extensions;
 
 namespace CSM.Navigation.Data
 {
+    [OrchardFeature("CSM.Navigation.Menus")]
     public class DividerMenuItemMigrations : DataMigrationImpl
     {
         public int Create()
