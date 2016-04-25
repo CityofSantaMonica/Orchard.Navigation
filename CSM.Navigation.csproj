@@ -123,6 +123,10 @@
       <Name>Orchard.Core</Name>
       <Private>False</Private>
     </ProjectReference>
+    <ProjectReference Include="..\Orchard.ContentPicker\Orchard.ContentPicker.csproj">
+      <Project>{F301EF7D-F19C-4D83-AA94-CB64F29C037D}</Project>
+      <Name>Orchard.ContentPicker</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Orchard.Taxonomies\Orchard.Taxonomies.csproj">
       <Project>{e649ea64-d213-461b-87f7-d67035801443}</Project>
       <Name>Orchard.Taxonomies</Name>
@@ -141,12 +145,14 @@
     <Compile Include="Data\DividerMenuItemMigrations.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Data\NavigationMigrations.cs" />
     <Compile Include="Data\TableOfContentsMigrations.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Drivers\DividerMenuItemPartDriver.cs" />
     <Compile Include="Drivers\TableOfContentsPartDriver.cs" />
     <Compile Include="Models\DividerMenuItemPart.cs" />
+    <Compile Include="Models\LandingPagePart.cs" />
     <Compile Include="Models\TableOfContentsPart.cs" />
     <Compile Include="Settings\TableOfContentsSettings.cs" />
     <Compile Include="Resources\TableOfContentsResourceManifest.cs" />

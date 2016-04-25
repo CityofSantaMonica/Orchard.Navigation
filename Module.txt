@@ -10,7 +10,7 @@ Features:
     CSM.Navigation:
         Description: Provides some useful navigation-related additions.
         Category: Navigation
-        Dependencies: Orchard.Taxonomies, Orchard.Tokens
+        Dependencies: Orchard.ContentPicker, Orchard.Taxonomies, Orchard.Tokens
     CSM.Navigation.Menus:
         Description: Provides bootstrapified menu items.
         Category: Navigation
